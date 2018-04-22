@@ -1,0 +1,29 @@
+app_default_hello_world:
+    path: /hello-world
+    defaults:
+        _controller: 'AppBundle:Default:helloWorld'
+
+app_default_addition:
+    path: /addition/{a}/{b}
+    defaults:
+        _controller: 'AppBundle:Default:addition'
+    requirements:
+        a: \d+
+        b: \d+
+
+app_default_save_login:
+    path: /save-login/{login}
+    defaults:
+        _controller: 'AppBundle:Default:saveLogin'
+    requirements:
+        login: .+
+
+app_default_show_login:
+    path: /show-login
+    defaults:
+        _controller: 'AppBundle:Default:showLogin'
+
+app_default_login_form:
+    path: /login-form
+    defaults:
+        _controller: 'AppBundle:Default:loginForm'
