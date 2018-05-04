@@ -1,0 +1,38 @@
+AppBundle\Entity\User:
+    type: entity
+    table: user
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        firstName:
+            type: string
+            length: 50
+        lastName:
+            type: string
+            length: 50
+    oneToOne:
+        address:
+            targetEntity: AppBundle\Entity\Address
+            cascade: [persist, remove]
+            joinColumn:
+                name: address_id
+                referencedColumnName: id
+    oneToMany:
+        phoneNumbers:
+            targetEntity: AppBundle\Entity\PhoneNumber
+            mappedBy: user
+            cascade: [persist, remove]
+
+    manyToMany:
+        categories:
+            targetEntity: AppBundle\Entity\Category
+            joinTable:
+                name: user_category
+                joinColumns:
+                    category_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    user_id:
+                        referencedColumnName: id

@@ -1,0 +1,17 @@
+AppBundle\Entity\PhoneNumber:
+    type: entity
+    table: phone_number
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        number:
+            type: integer
+    manyToOne:
+        user:
+            targetEntity: AppBundle\Entity\User
+            inversedBy: phoneNumbers
+            joinColumn:
+                name: user_id
+                referencedColumnName: id

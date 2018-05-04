@@ -86,4 +86,19 @@ class DefaultController extends Controller
             ]
         );
     }
+
+    /**
+     * @return Response
+     */
+    public function fortuneMessageAction()
+    {
+
+
+    	return $this->render(
+    		'@App/Default/fortune_message.html.twig',
+    		array(
+
+    		)
+    	);
+    }
 }

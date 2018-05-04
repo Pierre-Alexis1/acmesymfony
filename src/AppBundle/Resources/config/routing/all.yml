@@ -27,3 +27,28 @@ app_default_login_form:
     path: /login-form
     defaults:
         _controller: 'AppBundle:Default:loginForm'
+
+app_default_fortune_message:
+    path: /fortune-message
+    defaults:
+        _controller: 'AppBundle:Default:fortuneMessage'
+
+app_ajax_generate_message_ajax:
+    path: /ajax/generate-message
+    defaults:
+        _controller: 'AppBundle:Ajax:generateMessageAjax'
+
+app_user_create_random_user:
+    path: /user/create-random-user
+    defaults:
+        _controller: 'AppBundle:User:createRandomUser'
+
+app_user_remove_random_user:
+    path: /user/remove-random-user
+    defaults:
+        _controller: 'AppBundle:User:removeRandomUser'
+
+app_user_list_users:
+    path: /user/list
+    defaults:
+        _controller: 'AppBundle:User:listUsers'

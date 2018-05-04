@@ -1,0 +1,16 @@
+AppBundle\Entity\Address:
+    type: entity
+    table: address
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        number:
+            type: integer
+        street:
+            type: string
+            length: 100
+        street:
+            type: string
+            length: 50
