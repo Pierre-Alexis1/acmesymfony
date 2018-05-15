@@ -5,7 +5,9 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Address;
 use AppBundle\Entity\PhoneNumber;
 use AppBundle\Entity\User;
+use AppBundle\Form\Type\User\RegisterType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -89,5 +91,30 @@ class UserController extends Controller
                 'users' => $users,
             )
         );
+    }
+    
+    /**
+     * @return Response
+     */
+    public function registerAction(Request $request)
+    {
+    	$user = new User();
+    	$form = $this->createForm(RegisterType::class, $user);
+    	$form->handleRequest($request);
+
+    	if ($form->isValid()) {
+    	    $em = $this->getDoctrine()->getManager();
+    	    $em->persist($user);
+    	    $em->flush();
+
+    	    return new Response('ok', 200);
+        }
+    
+    	return $this->render(
+    		'@App/User/register.html.twig',
+    		array(
+    			'form' => $form->createView(),
+    		)
+    	);
     }
 }

@@ -1,0 +1,6 @@
+AppBundle\Entity\Warrior:
+    type: entity
+    table: warrior
+    fields:
+        rage:
+            type: integer
