@@ -6,8 +6,6 @@ use AppBundle\Entity\Address;
 use AppBundle\Entity\PhoneNumber;
 use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -22,16 +20,12 @@ class UserController extends Controller
     public function helloWorldAction()
     {
         $address = new Address();
-        $address->setStreet('...')
-            ->setNumber(5)
-            ->setCity('Clermont-Ferrand')
-        ;
+        $address->setStreet('...')->setNumber(5)->setCity('Clermont-Ferrand');
 
         $user = new User();
-        $user->setFirstName('Pierre-Alexis')
-            ->setLastName('Roche')
-            ->setAddress($address)
-        ;
+        $user->setFirstName('Pierre-Alexis')->setLastName('Roche')->setAddress($address);
+
+        return new Response('ok', 200);
     }
 
     /**
@@ -40,20 +34,13 @@ class UserController extends Controller
     public function createRandomUserAction()
     {
         $address = new Address();
-        $address->setNumber(21)
-            ->setStreet('Rue de nohanent')
-            ->setCity('Clermont-Ferrand')
-        ;
+        $address->setNumber(21)->setStreet('Rue de nohanent')->setCity('Clermont-Ferrand');
 
         $mobileNumber = new PhoneNumber();
         $mobileNumber->setNumber(1234567890);
 
         $user = new User();
-        $user->setFirstName('Alison')
-            ->setLastName('Jouanet')
-            ->setAddress($address)
-            ->addPhoneNumber($mobileNumber)
-        ;
+        $user->setFirstName('Alison')->setLastName('Jouanet')->setAddress($address)->addPhoneNumber($mobileNumber);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($user);
@@ -83,15 +70,24 @@ class UserController extends Controller
      */
     public function listUsersAction()
     {
-    	$em = $this->getDoctrine()->getManager();
-    	$users = $em->getRepository('AppBundle:User')->findAll();
+        $em = $this->getDoctrine()->getManager();
+
+//    	  $users = $em->getRepository('AppBundle:User')->findAll();
+//    	  $users = $em->getRepository('AppBundle:User')->findAllHavingPhoneNumberStartingWith06();
+//        $users = $em->getRepository('AppBundle:User')->findAllWithPhoneNumberStartingWith06Only();
+//        $users = $em->getRepository('AppBundle:User')->findAllWithCompositeFirstName();
+        $users = $em->getRepository('AppBundle:User')->findAllWithCompositeNameOlderThan(18);
 
 //        $users = $em->getRepository('AppBundle:User')->findBy([
 //            'firstName' => 'Pierre-Alexis',
 //            'lastName' => 'Roche',
 //        ]);
 
-    	dump($users);
-        exit;
+        return $this->render(
+            '@App/User/list_users.html.twig',
+            array(
+                'users' => $users,
+            )
+        );
     }
 }

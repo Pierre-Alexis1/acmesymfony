@@ -1,6 +1,7 @@
 AppBundle\Entity\User:
     type: entity
     table: user
+    repositoryClass: AppBundle\Repository\UserRepository
     id:
         id:
             type: integer
@@ -12,6 +13,8 @@ AppBundle\Entity\User:
         lastName:
             type: string
             length: 50
+        age:
+            type: integer
     oneToOne:
         address:
             targetEntity: AppBundle\Entity\Address

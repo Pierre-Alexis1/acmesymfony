@@ -20,6 +20,11 @@ class User
     protected $lastName;
 
     /**
+     * @var int
+     */
+    protected $age;
+
+    /**
      * Unidirectionnel et OneToOne
      * @var Address
      */
@@ -80,6 +85,26 @@ class User
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    /**
+     * @param int $age
+     *
+     * @return User
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
 
         return $this;
     }

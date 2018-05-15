@@ -7,7 +7,8 @@ AppBundle\Entity\PhoneNumber:
             generator: { strategy: AUTO }
     fields:
         number:
-            type: integer
+            type: string
+            length: 20
     manyToOne:
         user:
             targetEntity: AppBundle\Entity\User
