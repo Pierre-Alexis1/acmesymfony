@@ -1,0 +1,9 @@
+AppBundle\Entity\User:
+    properties:
+        age:
+            - Range:
+                min: 18
+                max: 100
+                minMessage: Vous devez être majeur (avoir au moins {{ limit }} ans)
+            - NotNull:
+                message: Obligatoire

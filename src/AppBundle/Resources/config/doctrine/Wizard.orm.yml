@@ -1,0 +1,6 @@
+AppBundle\Entity\Wizard:
+    type: entity
+    table: wizard
+    fields:
+        magic:
+            type: integer

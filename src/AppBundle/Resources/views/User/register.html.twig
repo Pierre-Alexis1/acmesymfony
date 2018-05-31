@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="{{ asset('bundles/app/css/style.css') }}"/>
+	</head>
+	<body>
+		{{ form_start(form) }}
+			{{ form_row(form.lastName) }}
+			{{ form_row(form.firstName) }}
+			-----------------
+			{{ form_row(form.age) }}
+		{{ form_end(form) }}
+	</body>
+</html>

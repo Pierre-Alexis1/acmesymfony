@@ -1,0 +1,16 @@
+AppBundle\Entity\Human:
+    type: entity
+    inheritanceType: JOINED
+    discriminatorColumn:
+        name: discr
+        type: string
+    discriminatorMap: {warrior: AppBundle\Entity\Warrior, wizard: AppBundle\Entity\Wizard}
+    table: human
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            length: 50
