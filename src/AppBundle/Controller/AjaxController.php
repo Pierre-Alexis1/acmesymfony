@@ -17,7 +17,7 @@ class AjaxController extends Controller
      */
     public function generateMessageAjaxAction()
     {
-        $fortuneMessageGenerator = new FortuneMessageGenerator();
+        $fortuneMessageGenerator = $this->get(FortuneMessageGenerator::class);
         $message = $fortuneMessageGenerator->generate();
 
         return new JsonResponse($message);
